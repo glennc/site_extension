@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <xdt:Import path="AppendAttributeTransform.dll"
+              namespace="AppendTransforms" />
+
+  <location path="%XDT_SITENAME%" xdt:Locator="Match(path)">
+    <system.webServer xdt:Transform="InsertIfMissing">
+      <runtime xdt:Transform="InsertIfMissing" >
+        <environmentVariables xdt:Transform="InsertIfMissing">
+          <add name="DOTNET_ADDITIONAL_DEPS" value="%XDT_EXTENSIONPATH%/deps" xdt:Locator="Match(name)" xdt:Transform="InsertOrAppendAttribute(Attribute='value')" />
+          <add name="ASPNETCORE_HOSTINGSTARTUPASSEMBLIES" value="Microsoft.AspNetCore.AzureLightup" xdt:Locator="Match(name)" xdt:Transform="InsertOrAppendAttribute(Attribute='value')" />
+        </environmentVariables>
+      </runtime>
+    </system.webServer>
+  </location>
+</configuration>
